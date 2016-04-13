@@ -3,7 +3,7 @@
 
 pkgname='grass7'
 pkgver='7.0.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization."
 arch=('i686' 'x86_64')
 url='https://grass.osgeo.org'
@@ -57,22 +57,18 @@ build() {
   export PATH
 
   # Enabling only those features which are not enabled by default. Out of the
-  # usefull ones, only DWG, MySQL, FFMPEG and Motif are left disabled. LAPACK
-  # and BLAS are not used for anything in GRASS anyway.
+  # usefull ones, only DWG, MySQL, FFMPEG and Motif are left disabled.
+  # BLAS and LAPACK are not used in GRASS core, but are needed for the
+  # v.kriging addon.
 
   # GRASS build system can't cope with current Arch's /etc/makepkg.conf default
   # CPPFLAGS="-D_FORTIFY_SOURCE=2".
-  # 
-  # The culprit appears to be (per config.log):
-  # /usr/include/sys/cdefs.h:30:3: error: #error "You need a ISO C conforming compiler to use the glibc headers"
-  # gcc: error: unrecognized command line option '-nologo'
   #
   # I have reported it in GRASS bugtracker: https://trac.osgeo.org/grass/ticket/2916.
   #
-  # I don't have a better idea than removing any -D_FORTIFY_SOURCE occurences
-  # from CPPFLAGS for now.
+  # Using a workaround as follows:
 
-  CPPFLAGS=`echo $CPPFLAGS | sed 's/-D_FORTIFY_SOURCE=.//g'` CFLAGS="$CFLAGS -Wall" CXXFLAGS="$CXXFLAGS -Wall" ./configure \
+  FORTIFY_FLAGS=`echo "$CPPFLAGS" | sed '/^.*\(-D_FORTIFY_SOURCE=.\).*$/s//\1/'` CPPFLAGS=`echo "$CPPFLAGS" | sed 's/-D_FORTIFY_SOURCE=.//g'` CFLAGS="$FORTIFY_FLAGS $CFLAGS" CXXFLAGS="$FORTIFY_FLAGS $CXXFLAGS" ./configure \
     --prefix=/opt \
     --exec_prefix=/opt/$pkgname \
     --with-freetype-includes=/usr/include/freetype2 \
@@ -126,7 +122,7 @@ package() {
                           "${pkgdir}/opt/${pkgname}/demolocation/.grassrc70"
 
   # Link GRASS exec script in /usr/bin under a custom name.
-  # This allows e.g. grass70 and grass70-svn be co-installed.
+  # This allows e.g. grass7 and grass7-svn be easily co-installed.
   mkdir -p "${pkgdir}/usr/bin"
   ln -sf "/opt/${pkgname}/bin/grass70" "${pkgdir}/usr/bin/${pkgname}"
 
@@ -158,3 +154,4 @@ package() {
   install -D -m644 "${srcdir}/grass-${pkgver}/gui/icons/grass-64x64.png" "${pkgdir}/usr/share/icons/${pkgname}-64x64.png"
   install -D -m644 "${srcdir}/grass-${pkgver}/gui/icons/grass.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
+
