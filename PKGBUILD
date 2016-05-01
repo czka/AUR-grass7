@@ -2,8 +2,8 @@
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname='grass7'
-pkgver='7.0.3'
-pkgrel='3'
+pkgver='7.0.4'
+pkgrel='1'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization."
 arch=('i686' 'x86_64')
 url='https://grass.osgeo.org'
@@ -20,7 +20,7 @@ optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_stat
 install=$pkgname.install
 conflicts=('grass')
 source=("https://grass.osgeo.org/grass70/source/grass-${pkgver}.tar.gz")
-md5sums=('dfbd39829036ee2d59b13c35a183ec0e')
+md5sums=('843e8942c14aa7473380ea70c9b0ec52')
 
 prepare() {
 
