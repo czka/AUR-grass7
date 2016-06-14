@@ -3,7 +3,7 @@
 
 pkgname='grass7'
 pkgver='7.0.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization."
 arch=('i686' 'x86_64')
 url='https://grass.osgeo.org'
@@ -12,7 +12,7 @@ license=('GPL')
 # More about GRASS build and runtime deps on http://grasswiki.osgeo.org/wiki/Compile_and_Install.
 depends=('zlib' 'blas' 'lapack' 'freetype2' 'cfitsio' 'fftw' 'gdal' 'geos' 'glu'
          'libjpeg' 'liblas' 'libpng' 'libtiff' 'libxmu' 'mesa' 'postgresql'
-         'proj' 'wxpython2.8' 'wxgtk2.8' 'xorg-server' 'cairo' 'unixodbc'
+         'proj' 'wxpython' 'wxgtk' 'xorg-server' 'cairo' 'unixodbc'
          'python2' 'python2-numpy' 'python2-matplotlib' 'python2-pillow'
          'subversion')
 makedepends=('doxygen')
@@ -84,7 +84,7 @@ build() {
     --with-postgres \
     --with-python=/usr/bin/python2-config \
     --with-readline \
-    --with-wxwidgets=/usr/bin/wx-config-2.8
+    --with-wxwidgets=/usr/bin/wx-config
 
   # According to GRASS dev team, --enable-64bit has effect only on AIX, HP-UX,
   # IRIX and Solaris. It's *always* enabled on GNU/Linux if the build platform
