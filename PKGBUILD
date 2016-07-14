@@ -14,7 +14,7 @@ depends=('zlib' 'blas' 'lapack' 'freetype2' 'cfitsio' 'fftw' 'gdal' 'geos' 'glu'
          'libjpeg' 'liblas' 'libpng' 'libtiff' 'libxmu' 'mesa' 'postgresql'
          'proj' 'wxpython' 'wxgtk' 'xorg-server' 'cairo' 'unixodbc'
          'python2' 'python2-numpy' 'python2-matplotlib' 'python2-pillow'
-         'subversion')
+         'python2-termcolor' 'subversion')
 makedepends=('doxygen')
 optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.')
 conflicts=('grass')
