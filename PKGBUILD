@@ -17,7 +17,6 @@ depends=('zlib' 'blas' 'lapack' 'freetype2' 'cfitsio' 'fftw' 'gdal' 'geos' 'glu'
          'subversion')
 makedepends=('doxygen')
 optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.')
-install=$pkgname.install
 conflicts=('grass')
 source=("https://grass.osgeo.org/grass70/source/grass-${pkgver}.tar.gz")
 md5sums=('843e8942c14aa7473380ea70c9b0ec52')
