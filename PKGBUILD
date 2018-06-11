@@ -11,7 +11,7 @@ url='https://grass.osgeo.org'
 license=('GPL')
 
 # More about GRASS build and runtime deps on http://grasswiki.osgeo.org/wiki/Compile_and_Install.
-depends=('blas' 'bzip2' 'cairo' 'cfitsio' 'fftw' 'freetype2' 'gdal' 'geos' 'glu' 'lapack' 'libjpeg' 'liblas' 'libpng'
+depends=('blas' 'bzip2' 'cairo' 'cfitsio' 'fftw' 'freetype2' 'gdal' 'geos' 'glu' 'lapack' 'libjpeg' 'libpng'
          'libtiff' 'libxmu' 'mesa' 'postgresql' 'proj' 'python2' 'python2-matplotlib' 'python2-numpy' 'python2-pillow'
          'python2-termcolor' 'subversion' 'unixodbc' 'wxgtk' 'wxpython' 'xorg-server' 'zlib')
 makedepends=('doxygen')
@@ -68,7 +68,6 @@ build() {
     --with-freetype-includes=/usr/include/freetype2 \
     --with-geos \
     --with-lapack \
-    --with-liblas \
     --with-netcdf \
     --with-nls \
     --with-odbc \
