@@ -2,7 +2,7 @@
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname='grass7'
-pkgver='7.4.0'
+pkgver='7.4.3'
 pkgrel='1'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and \
         visualization."
@@ -11,14 +11,40 @@ url='https://grass.osgeo.org'
 license=('GPL')
 
 # More about GRASS build and runtime deps on http://grasswiki.osgeo.org/wiki/Compile_and_Install.
-depends=('blas' 'bzip2' 'cairo' 'cfitsio' 'fftw' 'freetype2' 'gdal' 'geos' 'glu' 'lapack' 'libjpeg' 'libpng'
-         'libtiff' 'libxmu' 'mesa' 'postgresql' 'proj' 'python2' 'python2-matplotlib' 'python2-numpy' 'python2-pillow'
-         'python2-termcolor' 'subversion' 'unixodbc' 'wxgtk' 'wxpython' 'xorg-server' 'zlib')
-makedepends=('doxygen')
+depends=('blas'
+         'bzip2'
+         'cairo'
+         'cfitsio'
+         'fftw'
+         'fontconfig'
+         'freetype2'
+         'gdal'
+         'geos'
+         'glu'
+         'lapack'
+         'libjpeg'
+         'libpng'
+         'libtiff'
+         'libxmu'
+         'netcdf'
+         'postgresql'
+         'proj'
+         'python2'
+         'python2-matplotlib'
+         'python2-numpy'
+         'python2-pillow'
+         'python2-termcolor'
+         'readline'
+         'subversion'
+         'unixodbc'
+         'wxgtk'
+         'wxpython'
+         'zlib')
+makedepends=('doxygen' 'libxt')
 optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.')
 conflicts=('grass')
 source=("https://grass.osgeo.org/grass74/source/grass-${pkgver}.tar.gz")
-md5sums=('15b9eb019d6c132c1a65455b3283cf69')
+md5sums=('4f4462af7a95fe84ee21f3dd585dcb05')
 
 prepare() {
   cd "${srcdir}/grass-${pkgver}"
