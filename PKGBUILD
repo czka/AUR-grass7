@@ -2,7 +2,7 @@
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname='grass7'
-pkgver='7.4.3'
+pkgver='7.4.4'
 pkgrel='1'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and \
         visualization."
@@ -44,7 +44,7 @@ makedepends=('doxygen' 'libxt')
 optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.')
 conflicts=('grass')
 source=("https://grass.osgeo.org/grass74/source/grass-${pkgver}.tar.gz")
-md5sums=('4f4462af7a95fe84ee21f3dd585dcb05')
+md5sums=('98ae22f8a97a83a4d99a537236639e9c')
 
 prepare() {
   cd "${srcdir}/grass-${pkgver}"

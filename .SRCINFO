@@ -1,6 +1,6 @@
 pkgbase = grass7
 	pkgdesc = Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization.
-	pkgver = 7.4.3
+	pkgver = 7.4.4
 	pkgrel = 1
 	url = https://grass.osgeo.org
 	arch = i686
@@ -39,8 +39,8 @@ pkgbase = grass7
 	depends = zlib
 	optdepends = r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.
 	conflicts = grass
-	source = https://grass.osgeo.org/grass74/source/grass-7.4.3.tar.gz
-	md5sums = 4f4462af7a95fe84ee21f3dd585dcb05
+	source = https://grass.osgeo.org/grass74/source/grass-7.4.4.tar.gz
+	md5sums = 98ae22f8a97a83a4d99a537236639e9c
 
 pkgname = grass7
 
