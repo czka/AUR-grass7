@@ -1,7 +1,7 @@
 pkgbase = grass7
 	pkgdesc = Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization.
 	pkgver = 7.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://grass.osgeo.org
 	arch = i686
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = grass7
 	depends = postgresql
 	depends = proj
 	depends = python2
+	depends = python2-gdal
 	depends = python2-matplotlib
 	depends = python2-numpy
 	depends = python2-pillow

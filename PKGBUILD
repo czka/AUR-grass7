@@ -3,7 +3,7 @@
 
 pkgname='grass7'
 pkgver='7.4.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and \
         visualization."
 arch=('i686' 'x86_64')
@@ -30,6 +30,7 @@ depends=('blas'
          'postgresql'
          'proj'
          'python2'
+         'python2-gdal'
          'python2-matplotlib'
          'python2-numpy'
          'python2-pillow'
