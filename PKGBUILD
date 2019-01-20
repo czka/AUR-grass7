@@ -2,8 +2,8 @@
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname='grass7'
-pkgver='7.4.4'
-pkgrel='2'
+pkgver='7.6.0'
+pkgrel='1'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and \
         visualization."
 arch=('i686' 'x86_64')
@@ -44,8 +44,8 @@ depends=('blas'
 makedepends=('doxygen' 'libxt')
 optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.')
 conflicts=('grass')
-source=("https://grass.osgeo.org/grass74/source/grass-${pkgver}.tar.gz")
-md5sums=('98ae22f8a97a83a4d99a537236639e9c')
+source=("https://grass.osgeo.org/grass76/source/grass-${pkgver}.tar.gz")
+md5sums=('40f0b49529598cefd3e7b4f807d6133b')
 
 prepare() {
   cd "${srcdir}/grass-${pkgver}"
@@ -61,8 +61,8 @@ prepare() {
   sed -i "s,INSTDIR='\${prefix}'\"/grass-\${GRASS_VERSION_MAJOR}\.\${GRASS_VERSION_MINOR}\.\${GRASS_VERSION_RELEASE}\",INSTDIR='\${prefix}/${pkgname}'," configure
   # Custom desktop file:
   sed -i -e "s,^Name=GRASS GIS 7\$,Name=GRASS GIS ${pkgver}," \
-         -e "s,^TryExec=/usr/bin/grass74\$,TryExec=/usr/bin/${pkgname}," \
-         -e "s,^Exec=grass74\$,Exec=${pkgname}," \
+         -e "s,^TryExec=/usr/bin/grass76\$,TryExec=/usr/bin/${pkgname}," \
+         -e "s,^Exec=grass76\$,Exec=${pkgname}," \
          -e "s,^Icon=grass\$,Icon=/usr/share/icons/${pkgname}-64x64.png," \
          "${srcdir}/grass-${pkgver}/gui/icons/grass.desktop"
 }
@@ -134,13 +134,13 @@ package() {
   sed -i "s,${pkgdir},,g" "${pkgdir}/opt/${pkgname}/include/Make/Platform.make" \
                           "${pkgdir}/opt/${pkgname}/include/Make/Grass.make" \
                           "${pkgdir}/opt/${pkgname}/etc/fontcap" \
-                          "${pkgdir}/opt/${pkgname}/bin/grass74" \
-                          "${pkgdir}/opt/${pkgname}/demolocation/.grassrc74"
+                          "${pkgdir}/opt/${pkgname}/bin/grass76" \
+                          "${pkgdir}/opt/${pkgname}/demolocation/.grassrc76"
 
   # Link GRASS exec script in /usr/bin under a custom name. This allows e.g. grass7 and grass7-svn be easily
   # co-installed.
   mkdir -p "${pkgdir}/usr/bin"
-  ln -sf "/opt/${pkgname}/bin/grass74" "${pkgdir}/usr/bin/${pkgname}"
+  ln -sf "/opt/${pkgname}/bin/grass76" "${pkgdir}/usr/bin/${pkgname}"
 
   # https://grasswiki.osgeo.org/wiki/GRASS_and_Python#Using_a_version_of_Python_different_from_the_default_installation:
   # - "On Unix, GRASS_PYTHON is only used for components which use wxPython"
@@ -157,7 +157,7 @@ package() {
   ln -sf "`which python2`" "${pkgdir}/opt/${pkgname}/bin/python"
 
   # The startup Python 2 script needs a patch nevertheless:
-  sed -i '1 s/python/python2/' "${pkgdir}/opt/${pkgname}/bin/grass74"
+  sed -i '1 s/python/python2/' "${pkgdir}/opt/${pkgname}/bin/grass76"
 
   # Install dynamic linker run-time bindings conf for GRASS libs. Pacman triggers `ldconfig' automatically after
   # package installation.
