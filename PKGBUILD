@@ -3,7 +3,7 @@
 
 pkgname='grass7'
 pkgver='7.6.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and \
         visualization."
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ depends=('blas'
          'libtiff'
          'libxmu'
          'netcdf'
+         'pdal'
          'postgresql'
          'proj'
          'python2'
@@ -40,6 +41,7 @@ depends=('blas'
          'unixodbc'
          'wxgtk'
          'wxpython'
+         'zstd'
          'zlib')
 makedepends=('doxygen' 'libxt')
 optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.')
@@ -99,11 +101,13 @@ build() {
     --with-nls \
     --with-odbc \
     --with-openmp \
+    --with-pdal \
     --with-postgres \
     --with-pthread \
     --with-python=/usr/bin/python2-config \
     --with-readline \
-    --with-wxwidgets=/usr/bin/wx-config
+    --with-wxwidgets=/usr/bin/wx-config \
+    --with-zstd
 
   # According to GRASS dev team, --enable-64bit has effect only on AIX, HP-UX, IRIX and Solaris. It's *always* enabled
   # on GNU/Linux if the build platform supports it, no matter what "64bit support:" on the configure output reads, so
