@@ -2,8 +2,8 @@
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname='grass7'
-pkgver='7.6.0'
-pkgrel='2'
+pkgver='7.6.1'
+pkgrel='1'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and \
         visualization."
 arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ makedepends=('doxygen' 'libxt')
 optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.')
 conflicts=('grass')
 source=("https://grass.osgeo.org/grass76/source/grass-${pkgver}.tar.gz")
-md5sums=('40f0b49529598cefd3e7b4f807d6133b')
+md5sums=('9ca74f9010d013f735737a90c65d8a7f')
 
 prepare() {
   cd "${srcdir}/grass-${pkgver}"
@@ -59,8 +59,8 @@ prepare() {
 
   # INSTDIR is partly hardcoded in `configure'. Let's fix it, so that INST_DIR, which is derived from it, is set as
   # needed. Debian packagers are doing a similar thing (see eg.
-  # https://anonscm.debian.org/cgit/pkg-grass/grass.git/tree/debian/patches/instdir).
-  sed -i "s,INSTDIR='\${prefix}'\"/grass-\${GRASS_VERSION_MAJOR}\.\${GRASS_VERSION_MINOR}\.\${GRASS_VERSION_RELEASE}\",INSTDIR='\${prefix}/${pkgname}'," configure
+  # https://salsa.debian.org/debian-gis-team/grass/blob/master/debian/patches/instdir).
+  sed -i "s,INSTDIR='\${prefix}'\"/grass\${GRASS_VERSION_MAJOR}\${GRASS_VERSION_MINOR}\",INSTDIR='\${prefix}/${pkgname}'," configure
   # Custom desktop file:
   sed -i -e "s,^Name=GRASS GIS 7\$,Name=GRASS GIS ${pkgver}," \
          -e "s,^TryExec=/usr/bin/grass76\$,TryExec=/usr/bin/${pkgname}," \
