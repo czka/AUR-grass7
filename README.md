@@ -1,3 +1,6 @@
+## News
+I'm no lonegr maintaining this actively. Use AUR [`grass`](https://aur.archlinux.org/packages/grass/) package instead.
+
 ## Description
 
 This is a custom, more feature-rich GRASS GIS 7 PKGBUILD for Arch Linux. Main differences compared to `grass' from the AUR:
