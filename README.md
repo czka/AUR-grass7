@@ -1,5 +1,5 @@
 ## News
-I'm no lonegr maintaining this actively. Use AUR [`grass`](https://aur.archlinux.org/packages/grass/) package instead.
+I don't maintain this actively anymore. Use AUR [`grass`](https://aur.archlinux.org/packages/grass/) package instead.
 
 ## Description
 
